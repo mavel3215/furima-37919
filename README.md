@@ -12,44 +12,51 @@
 |last_name_katakana  |string  |null: false              |
 |birthday            |date    |null: false              |
 
-
 ### Association
 - has_many :items
-- has_one  :order
+- has_many :orders
 
 
 ##items テーブル
-|Column     |Type      |Options                       |
-|-----------|----------|------------------------------|
-|item_name  |string    |null: false                   |
-|description|text      |null: false                   |
-|category   |string    |null: false                   |
-|condition  |string    |null: false                   |
-|fee        |integer   |null: false                   |
-|ship_from  |string    |null: false                   |
-|waiting_day|integer   |null: false                   |
-|price      |integer   |null: false                   |
-|user       |references|null: false, foreign_key: true|
+|Column        |Type      |Options                       |
+|--------------|----------|------------------------------|
+|item_name     |string    |null: false                   |
+|description   |text      |null: false                   |
+|category_id   |integer   |null: false                   |
+|condition_id  |integer   |null: false                   |
+|fee_id        |integer   |null: false                   |
+|ship_from_id  |integer   |null: false                   |
+|waiting_day_id|integer   |null: false                   |
+|price         |integer   |null: false                   |
+|user          |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
 - has_one  :order
 
+
 ##orders テーブル
 |Column       |Type      |Options                       |
-|---------    |----------|------------------------------|
-|card_number  |integer   |null: false                   |
-|expire_date  |date      |null: false                   |
-|security_code|integer   |null: false                   |
-|post_code    |integer   |null: false                   |
-|prefecture   |string    |null: false                   |
-|address1     |string    |null: false                   |
-|address2     |string    |null: false                   |
-|building_name|string    |null: false                   |
-|phone_number |integer   |null: false                   |
+|-------------|----------|------------------------------|
 |user         |references|null: false, foreign_key: true|
 |item         |references|null: false, foreign_key: true|
+|address      |references|null: false, foreign_key: true|
 
 ### Association
-- has_one  :user
+- belongs_to :user
 - has_one  :item
+- has_one  :address
+
+
+##addressesテーブル
+|Column       |Type      |Options                       |
+|-------------|----------|------------------------------|
+|post_code    |string    |null: false                   |
+|prefecture_id|integer   |null: false                   |
+|address1     |string    |null: false                   |
+|address2     |string    |null: false                   |
+|building_name|string    |                              |
+|phone_number |string    |null: false                   |
+
+### Association
+- has_one  :order
