@@ -25,10 +25,10 @@
 |category_id   |integer   |null: false                   |
 |condition_id  |integer   |null: false                   |
 |fee_id        |integer   |null: false                   |
-|ship_from_id  |integer   |null: false                   |
+|prefecture_id |integer   |null: false                   |
 |waiting_day_id|integer   |null: false                   |
 |price         |integer   |null: false                   |
-|user_id       |references|null: false, foreign_key: true|
+|user          |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -38,8 +38,8 @@
 ##orders テーブル
 |Column       |Type      |Options                       |
 |-------------|----------|------------------------------|
-|user_id      |references|null: false, foreign_key: true|
-|item_id      |references|null: false, foreign_key: true|
+|user         |references|null: false, foreign_key: true|
+|item         |references|null: false, foreign_key: true|
 
 
 ### Association
@@ -57,7 +57,7 @@
 |address2     |string    |null: false                   |
 |building_name|string    |                              |
 |phone_number |string    |null: false                   |
-|order_id     |references|null: false, foreign_key: true|
+|order        |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :order
