@@ -28,7 +28,7 @@
 |ship_from_id  |integer   |null: false                   |
 |waiting_day_id|integer   |null: false                   |
 |price         |integer   |null: false                   |
-|user          |references|null: false, foreign_key: true|
+|user_id       |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -38,14 +38,14 @@
 ##orders テーブル
 |Column       |Type      |Options                       |
 |-------------|----------|------------------------------|
-|user         |references|null: false, foreign_key: true|
-|item         |references|null: false, foreign_key: true|
-|address      |references|null: false, foreign_key: true|
+|user_id      |references|null: false, foreign_key: true|
+|item_id      |references|null: false, foreign_key: true|
+
 
 ### Association
 - belongs_to :user
-- has_one  :item
-- has_one  :address
+- belongs_to :item
+- has_one: address
 
 
 ##addressesテーブル
@@ -57,6 +57,7 @@
 |address2     |string    |null: false                   |
 |building_name|string    |                              |
 |phone_number |string    |null: false                   |
+|order_id     |references|null: false, foreign_key: true|
 
 ### Association
-- has_one  :order
+- belongs_to :order
