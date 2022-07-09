@@ -57,6 +57,14 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
       end
+      
+      it "passwordが全角英数字混合では登録できない" do
+        @user.password ="１２３ ABC"
+        @user.password_confirmation ="１２３ ABC"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
+      end
+
       it "passwordとpassword_confirmationが不一致では登録できない" do
         @user.password ="123456"
         @user.password_confirmation ="1234567"
