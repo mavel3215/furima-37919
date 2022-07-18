@@ -26,7 +26,7 @@
 |condition_id  |integer   |null: false                   |
 |fee_id        |integer   |null: false                   |
 |prefecture_id |integer   |null: false                   |
-|waiting_day_id|integer   |null: false                   |
+|waitingday_id|integer   |null: false                   |
 |price         |integer   |null: false                   |
 |user          |references|null: false, foreign_key: true|
 
